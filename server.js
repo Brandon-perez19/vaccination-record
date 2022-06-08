@@ -2,15 +2,17 @@ const express = require('express');
 const routes = require('./routes');
 const sequelize = require('./config/connection')
 
-const PORT = process.env.PORT || 3001;
 const app = express();
+const PORT = process.env.PORT || 3001;
+
 
 //express middleware
-app.use(express.urelencoded({ extended: false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-//use apiRoutes
-app.use('/api', apiRoutes);
+
+//turn on routes
+app.use(routes);
 
 //Default response for any other request (Not Found)
 app.use((req, res) => {

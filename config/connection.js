@@ -10,3 +10,5 @@ const sequelize = new Sequelize('vaccination_db', 'root', '' , {
     dialect: 'mysql',
     port: 3306
 })
+
+module.exports = sequelize

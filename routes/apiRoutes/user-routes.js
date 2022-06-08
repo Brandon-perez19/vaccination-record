@@ -1,8 +1,7 @@
 const router = require('express').Router();
-//replace when user object is created
-// const { User } = require();
+const { User } = require('../../models');
 
-//Get /api/users
+//gets all users
 router.get('/', (req, res => {
     //Access our User model and .findAll method 
     User.findAll({
@@ -13,8 +12,28 @@ router.get('/', (req, res => {
             console.log(err);
             res.status(500).json(err);
         })
-
 }))
+
+//gets a single user
+router.get('/:id', (req, res) => {
+    User.findOne({ 
+        attributes: { exclude: ['password'] },
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbUserData => {
+        if(!dbUserData) {
+            res.status(404).json({ message: 'No user found with this id' });
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 //creates a user
 router.post('/', (req, res) => {
