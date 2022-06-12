@@ -1,14 +1,16 @@
-//importing sequelize constructor 
-const Sequelize = require('sequelize');
+const { Sequelize } = require("sequelize");
+//not sure if constant is necessary
+let sequelize;
 
-//importing .env to protect database info
-require('dotenv').config();
+if (process.env.JAWSDB_URL) {
+    sequelize = new Sequelize(process.env.JAWSDB_URL);
 
-//creating connection to database
-const sequelize = new Sequelize('vaccination_db', 'root', '' , {
-    host: 'localhost',
-    dialect: 'mysql',
-    port: 3306
-})
-
-module.exports = sequelize
+} else {
+    sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+        host: 'localhost',
+        dialect: 'mysql',
+        port: 3306
+    
+    });
+    
+}
