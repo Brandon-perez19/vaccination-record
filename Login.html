@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>Pet Vaccs Records</title>
-    <title>image rotator</title>
+    <title>Interactive Login Form</title>
     <link rel="stylesheet" href="./vaccpr/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./vaccpr/Login.css">
+    <script src="Login.js"></script>
 </head>
 
-<body> 
+<body>
     <nav>
         <header>
             <h1>Pet Vaccs Records</h1>
@@ -21,7 +22,25 @@
             <li><a href="index.html">Home</a></li>
         </ul>
     </nav>
-</body>       
 
+    <form class="box" action="Login.html" method="POST">
+        <h2>
+            LOGIN  
+        </h2>
+        <input type="text" name="LG" placeholder="Enter Username" id="username">
+        <input type="password" name="PS" placeholder="Enter Password" id="password">
+        <input type="submit" name="CR" value="login" onclick="validate()"> 
+        <p class="para-2">Don't have an account? <a href="SignUp.html">Click Here!</a></p>
+    </form> 
+    
+    
+
+</body>
+
+<footer>
+
+</footer>
+     
+</html>
 
    

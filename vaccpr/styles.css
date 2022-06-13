@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: grey;
+    background-color: paleturquoise;
 }
 
 nav {
@@ -19,11 +19,17 @@ header {
     text-align: center 
 }
 
-ul {
-
+h2{
+    color: rgb(234, 0, 255);
+    text-align: center;
+    font-size: 30px;
+    font-display: bold;
 }
 
-ul li{
+ul {
+}
+
+ul li {
     list-style: none;
     display: inline-block;
     float: right;
@@ -64,4 +70,18 @@ footer{
     font-size: 23px;
     font-style: bold;
     
+}
+
+* contact{
+    font-size: larger;
+    width: 100%;
+    text-align: center;
+}
+
+.style{
+    color: black
+    width 100%
+}
+.login{
+    text-align: center;
 }
