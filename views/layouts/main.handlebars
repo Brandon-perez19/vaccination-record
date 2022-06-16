@@ -21,7 +21,7 @@
             <ol>
                 <a href="/login" class="navbar-brand text-white border-bottom" > Login </a>
                 {{#if loggedIn}}
-                <a> Logout </a>
+                <button id="logout" class="btn btn-link navbar-brand text-white border-bottom"> Logout </button>
                 {{/if}}
             </ol>
         </nav>
@@ -32,7 +32,7 @@
         </section>
         {{{body}}}
     </main>
-    <footer class="text-bg-light p-3 border text-center">
+    <footer class="text-bg-light p-3 border text-center fs-5 fst-italic">
         For all your pet needs!
     </footer>
     <!-- JavaScript Bundle with Popper -->

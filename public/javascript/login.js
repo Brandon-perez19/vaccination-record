@@ -2,7 +2,7 @@ async function loginFormHandler(event) {
     event.preventDefault();
 
     const email = document.querySelector("#email-login").value.trim();
-    const password = document.querySelector("password-login").value.trim();
+    const password = document.querySelector("#password-login").value.trim();
 
     if (email && password) {
         const response = await fetch('api/users/login', {
@@ -15,7 +15,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/dashboard/');
         } else {
             alert(response.statusText);
         }
@@ -30,7 +30,7 @@ async function signupFormHandler(event) {
     const password = document.querySelector('#password-signup').value.trim();
 
     if (username && email && password) {
-        const response = await fetch('api/users', {
+        const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
                 username,
@@ -40,6 +40,7 @@ async function signupFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
 
+        //check the response status
         if (response.ok) {
             document.location.replace('/dashboard/');
         } else {

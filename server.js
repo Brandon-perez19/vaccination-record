@@ -20,7 +20,23 @@ app.use(express.urlencoded({ extended: true }));
 //send back static image file
 app.use(express.static(path.join(__dirname, 'public')));
 
-//turn on routes
+//user sessions set-up
+const session =require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+    secret: 'secret stuff',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize 
+    })
+}
+
+app.use(session(sess));
+
+//app.use must be underneath sessions
 app.use(routes);
 
 //Default response for any other request (Not Found)
@@ -29,6 +45,6 @@ app.use((req, res) => {
 });
 
 //connection to db, using sequilize
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log(`Now listening at Port ${PORT}`));
 });

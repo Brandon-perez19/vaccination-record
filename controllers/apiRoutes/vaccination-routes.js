@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Vaccination, User } = require('../../models');
+const sequelize = require('../../config/connection');
 
 //gets all vaccination
 router.get('/', (req, res) => { 

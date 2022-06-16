@@ -1,27 +1,30 @@
-<section>
-    <h2> Create a New Vaccine Form </h2>
-    <form class="new-post-form">
-        <div>
-            <label for="vaccine-title">Vaccination</label>
+<section class=".bg-light row">
+
+    <form class="col-md-2"></form>
+    <form class="new-post-form col-md-8 border my-4 card">
+        <h2 class="display-4 card-header border-bottom"> Create a New Vaccine Form </h2>
+        <div class="my-2 text-center">
+            <label class="display-6 text-center fst-italic" for="vaccine-title"> Vaccination: </label>
         </div>
-        <div>
-            <label for="pet-name"> Your Pets Name </label>
-            <input type="text" id="pets-name" name="pets-name" />
+        <div class="my-2 mx-3">
+            <label for="pet-name" class="form-label text-center fw-semibold"> Your Pets Name </label>
+            <input type="text" class="form-control" id="pets-name" name="pets-name" placeholder="Your pets name here..."/>
         </div>
-        <div>
-            <label for="pet-type"> What Pet do you have? </label>
-            <input type="checkbox" id="dog" name="dog" />
-            <input type="checkbox" id="cat" name="cat" />
-            <input type="checkbox" id="other" name="other" />
+        <div class="my-2 mx-3">
+            <label for="pet-type" class="form-label text-center fw-semibold"> What kind of pet do you own? </label>
+            <input type="radio" class="form-check-input" id="dog" name="dog"> Dog </input>
+            <input type="radio" class="form-check-input" id="cat" name="cat" /> Cat</input>
+            <input type="radio" class="form-check-input" id="other" name="other" /> Other</input>
         </div>
-        <div>
-            <label for="vaccines"> What Vaccines does your pet have?</label>
-            <input type="text" id="vaccine-list" name="vaccines">
-            <label for="vaccine-date"> When? </label>
-            <input type="date" id="vaccine-date" name="vaccine-date" value="${currentDate}" min= "${pastTwoYear}" max="${twoYear}" >
+        <div class="mx-3">
+            <label for="vaccines" class=" my-2 form-label text-center fw-semibold"> What Vaccines does your pet have?</label>
+            <input type="text" id="vaccine-list" class="form-control" name="vaccines" placeholder="(i.e: Rabbies)">
+            <label for="vaccine-date" class="my-2 form-label text-center fw-semibold"> When? </label>
+            <input type="date" class="form-control" id="vaccine-date" name="vaccine-date" value="${currentDate}" min= "${pastTwoYear}" max="${twoYear}" >
         </div>
-        <button type="submit" class="btn"> Create! </button>
+        <button type="submit" class=" my-4 mx-2 btn btn-info fw-semibold"> Create! </button>
     </form>
+    <form class="col-md-2"></form>
 </section>
 
 
