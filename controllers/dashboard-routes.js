@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Vaccination } = requrie('../models');
+const { User, Vaccination } = require('../models');
 
 //get all vaccinations related to user
 router.get('/', (req, res) => {

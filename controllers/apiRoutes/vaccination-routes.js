@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Vaccination, User } = require('../../models');
 
 //gets all vaccination
-router.get('/', (req, res => { 
+router.get('/', (req, res) => { 
     Vaccination.findAll({
         attributes: [
             'id',
@@ -26,7 +26,7 @@ router.get('/', (req, res => {
             console.log(err);
             res.status(500).json(err);
         })
-}))
+});
 
 router.get('/:id', (req, res) => {
     Vaccination.findOne({ 

@@ -1,0 +1,28 @@
+<section>
+    <h2> Create a New Vaccine Form </h2>
+    <form class="new-post-form">
+        <div>
+            <label for="vaccine-title">Vaccination</label>
+        </div>
+        <div>
+            <label for="pet-name"> Your Pets Name </label>
+            <input type="text" id="pets-name" name="pets-name" />
+        </div>
+        <div>
+            <label for="pet-type"> What Pet do you have? </label>
+            <input type="checkbox" id="dog" name="dog" />
+            <input type="checkbox" id="cat" name="cat" />
+            <input type="checkbox" id="other" name="other" />
+        </div>
+        <div>
+            <label for="vaccines"> What Vaccines does your pet have?</label>
+            <input type="text" id="vaccine-list" name="vaccines">
+            <label for="vaccine-date"> When? </label>
+            <input type="date" id="vaccine-date" name="vaccine-date" value="${currentDate}" min= "${pastTwoYear}" max="${twoYear}" >
+        </div>
+        <button type="submit" class="btn"> Create! </button>
+    </form>
+</section>
+
+
+<script src="/javascript/add-vaccine.js"></script>

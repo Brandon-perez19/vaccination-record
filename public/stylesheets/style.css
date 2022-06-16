@@ -1,0 +1,6 @@
+#hero {
+    background-image: url(../screenshots/dog.jpg);
+    background-size: cover;
+    height: 360px;
+    background-position-y: 16%;
+}

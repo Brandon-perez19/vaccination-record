@@ -1,0 +1,33 @@
+<article>
+    <a href="/dashboard/"> &larr; Back to Dashboard </a>
+    <h2>
+        Edit Vaccine
+    </h2>
+    <form class="edit-vaccine-form">
+        <div>
+            <input name="vaccine-title" type="text" value="{{vaccine.pet_name}}" />
+        </div>
+        <div>
+            Created on {{format_date post.created_at}}
+        </div>
+        <button type="submit"> Save Post</button>
+        <button type="button"> Delete Post</button>
+    </form>
+</article>
+{{!-- 
+//vaccination can update name and vaccine data --}}
+<form class="vaccine-form">
+    <div>
+        <label for="vaccines"> What Vaccines does your pet have?</label>
+        <input type="text" id="vaccine-list" name="vaccines">
+        <label for="vaccine-date"> When? </label>
+        <input type="date" id="vaccine-date" name="vaccine-date" value="${currentDate}" min="${pastTwoYear}"
+            max="${twoYear}">
+    </div>
+    <div>
+        <button type="submit"> Add Vaccination </button>
+    </div>
+</form>
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
