@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const { User, Vaccination } = require('../models');
-const sequelize = require('../config/connection');
-
+const withAuth =require('../utils/auth')
 
 //get all vaccinations related to user
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     Vaccination.findAll({
         where: {
             // user_id: req.session.user_id
@@ -44,7 +43,7 @@ router.get('/', (req, res) => {
 });
 
 //edit single vaccination record to specific user
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', withAuth, (req, res) => {
     Vaccination.findByPk(req.params.id, {
         attributes: [
             'id',

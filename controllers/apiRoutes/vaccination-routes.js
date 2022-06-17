@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Vaccination, User } = require('../../models');
-const sequelize = require('../../config/connection');
+const  withAuth = require('../../utils/auth')
 
 //gets all vaccination
 router.get('/', (req, res) => { 
@@ -66,7 +66,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Vaccination.create({
         pet_name: req.body.pet_name,
         pet_species: req.body.pet_species,
@@ -82,7 +82,7 @@ router.post('/', (req, res) => {
 });
 
 //updates vaccination form
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Vaccination.update(
         {
             pet_name: req.body.pet_name,
@@ -105,7 +105,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Vaccination.destroy({
         where: {
             id: req.params.id

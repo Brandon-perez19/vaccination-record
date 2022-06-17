@@ -19,7 +19,9 @@
         </h1>
         <nav class="navbar navbar-expand-lg col-4 justify-content-end">
             <ul>
+                {{#unless loggedIn}}
                 <a href="/login" class="navbar-brand text-white border-bottom" > Login </a>
+                {{/unless}}
                 {{#if loggedIn}}
                 <button id="logout" class="btn btn-link navbar-brand text-white border-bottom"> Logout </button>
                 {{/if}}
