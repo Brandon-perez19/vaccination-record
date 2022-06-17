@@ -7,9 +7,12 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//helpers importing
+const helpers = require('./utils/helpers');
+
 //importing handlebars
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helpers});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars')
 
@@ -45,6 +48,6 @@ app.use((req, res) => {
 });
 
 //connection to db, using sequilize
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening at Port ${PORT}`));
 });

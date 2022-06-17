@@ -9,7 +9,9 @@ router.get('/', (req, res) => {
             'id',
             'pet_name',
             'pet_species',
+            'vaccine',
             'vaccination_date',
+            'user_id',
             'created_at'
         ],
         order: [[ 'created_at', 'DESC']],
@@ -17,6 +19,7 @@ router.get('/', (req, res) => {
             {
                 model: User,
                 attributes: [
+                    'id',
                     'username'
                 ]
             }
@@ -39,13 +42,14 @@ router.get('/:id', (req, res) => {
             'id',
             'pet_name',
             'pet_species',
+            'vaccine',
             'vaccination_date',
             'created_at'
         ],
         include: [
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['username', 'id']
             }
         ]
     })
@@ -66,7 +70,9 @@ router.post('/', (req, res) => {
     Vaccination.create({
         pet_name: req.body.pet_name,
         pet_species: req.body.pet_species,
-        vaccination_date: req.body.vaccination_date
+        vaccine: req.body.vaccine,
+        vaccination_date: req.body.vaccination_date,
+        user_id: req.session.user_id
     })
         .then(dbVaxData => res.json(dbVaxData))
         .catch(err => {
@@ -80,16 +86,14 @@ router.put('/:id', (req, res) => {
     Vaccination.update(
         {
             pet_name: req.body.pet_name,
-            vaccination_date: req.body.vaccination_date
         },
         {
             where: {
                 id: req.params.id
             }
-        }
-    )
+    })
     .then(dbVaxData => {
-        if(!dbVaxData[0]){
+        if(!dbVaxData){
             res.status(404).json({message: 'No Vaccination Records found with this User'});
             return;
         }

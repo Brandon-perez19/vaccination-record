@@ -1,33 +1,27 @@
-<article>
-    <a href="/dashboard/"> &larr; Back to Dashboard </a>
-    <h2>
+<article class="card">
+    <a href="/dashboard/" class="bg-light"> &larr; Back to Dashboard </a>
+    <h2 class="display-4 card-header border-bottom">
         Edit Vaccine
     </h2>
     <form class="edit-vaccine-form">
-        <div>
-            <input name="vaccine-title" type="text" value="{{vaccine.pet_name}}" />
+        <div class="mx-3">
+            <label for="pet-name-edit" class=" my-2 form-label text-center fw-semibold"> Edit Pet Name:</label>
+            <input name="pet-name-edit" type="text" class="form-control" placeholder="{{vaccine.pet_name}}" />
         </div>
-        <div>
-            Created on {{format_date post.created_at}}
+        <div class="mx-3">
+            <label for="vaccines-edit" class=" my-2 form-label text-center fw-semibold"> Edit Vaccination here:</label>
+            {{!-- not sure hot to populate vaccine property of object here --}}
+            <input type="text" class="form-control" name="vaccines-edit" placeholder="New Vaccine" />
+            <label for="vaccine-date" class="my-2 form-label text-center fw-semibold"> Edit Date: </label>
+            <input type="date" class="form-control" id="vaccine-date" name="vaccine-date" value="{{vaccine.vaccination_date}}">
         </div>
-        <button type="submit"> Save Post</button>
-        <button type="button"> Delete Post</button>
+        <div class="mx-3 my-2">
+            Created on {{format_date vaccine.created_at}}
+        </div>
+        <button type="submit" class="btn btn-primary my-4 ms-2"> Save Post</button>
+        <button type="button" id="delete-record-btn" class="btn btn-primary my-4 ms-2"> Delete Post</button>
     </form>
 </article>
-{{!-- 
-//vaccination can update name and vaccine data --}}
-<form class="vaccine-form">
-    <div>
-        <label for="vaccines"> What Vaccines does your pet have?</label>
-        <input type="text" id="vaccine-list" name="vaccines">
-        <label for="vaccine-date"> When? </label>
-        <input type="date" id="vaccine-date" name="vaccine-date" value="${currentDate}" min="${pastTwoYear}"
-            max="${twoYear}">
-    </div>
-    <div>
-        <button type="submit"> Add Vaccination </button>
-    </div>
-</form>
 
-<script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/edit-vaccine.js"></script>
+<script src="/javascript/delete-vaccine.js"></script>

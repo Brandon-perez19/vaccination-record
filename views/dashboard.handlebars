@@ -1,4 +1,4 @@
-<section class=".bg-light row">
+<section class="bg-light row">
 
     <form class="col-md-2"></form>
     <form class="new-post-form col-md-8 border my-4 card">
@@ -11,21 +11,34 @@
             <input type="text" class="form-control" id="pets-name" name="pets-name" placeholder="Your pets name here..."/>
         </div>
         <div class="my-2 mx-3">
-            <label for="pet-type" class="form-label text-center fw-semibold"> What kind of pet do you own? </label>
-            <input type="radio" class="form-check-input" id="dog" name="dog"> Dog </input>
-            <input type="radio" class="form-check-input" id="cat" name="cat" /> Cat</input>
-            <input type="radio" class="form-check-input" id="other" name="other" /> Other</input>
+            <label for="pet-species" class="form-label text-center fw-semibold"> What kind of pet do you own? </label>
+            <input type="radio" class="form-check-input" id="dog" value="Dog" name="pet-species"> Dog </input>
+            <input type="radio" class="form-check-input" id="cat" value="Cat" name="pet-species" /> Cat</input>
+            <input type="radio" class="form-check-input" id="other" value="other" name="pet-species" /> Other</input>
         </div>
         <div class="mx-3">
             <label for="vaccines" class=" my-2 form-label text-center fw-semibold"> What Vaccines does your pet have?</label>
             <input type="text" id="vaccine-list" class="form-control" name="vaccines" placeholder="(i.e: Rabbies)">
             <label for="vaccine-date" class="my-2 form-label text-center fw-semibold"> When? </label>
-            <input type="date" class="form-control" id="vaccine-date" name="vaccine-date" value="${currentDate}" min= "${pastTwoYear}" max="${twoYear}" >
+            <input type="date" class="form-control" id="vaccine-date" name="vaccine-date" >
         </div>
         <button type="submit" class=" my-4 mx-2 btn btn-info fw-semibold"> Create! </button>
     </form>
     <form class="col-md-2"></form>
 </section>
 
+{{#if vaccines.length}}
+<section class="card">
+    <h2 class="display-4 card-header border-bottom"> Your other Vaccination Records: </h2>
+    <ol>
+        {{#each vaccines as |vaccine|}}
+        <li>
+            {{> vaccine-info vaccine}}
+            <a href="/dashboard/edit/{{vaccine.id}}" class="edit-link"> Edit Record</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}
 
 <script src="/javascript/add-vaccine.js"></script>

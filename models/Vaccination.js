@@ -20,8 +20,12 @@ Vaccination.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        vaccine: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         vaccination_date:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         user_id: {

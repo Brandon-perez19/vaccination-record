@@ -7,12 +7,14 @@ const sequelize = require('../config/connection');
 router.get('/', (req, res) => {
     Vaccination.findAll({
         where: {
-            user_id: req.session.user_id
+            // user_id: req.session.user_id
+            user_id: 1
         },
         attributes: [
             'id',
             'pet_name',
             'pet_species',
+            'vaccine',
             'vaccination_date',
             'created_at'
         ],
@@ -24,8 +26,15 @@ router.get('/', (req, res) => {
         ]
     })
     .then(dbVaccinationData => {
-        const vaccines = dbVaccinationData.map( vaccine => vaccine.get ({ plain: true }));
-        res.render('dashboard', {vaccines, loggedIn: true });
+        //serialize data
+        const vaccines = dbVaccinationData.map( vaccines => vaccines.get ({ plain: true }));
+        console.log('=====================')
+        console.log(vaccines)
+        //pass data to template 'dashboard'
+        res.render('dashboard', {
+            vaccines,
+            loggedIn: req.session.loggedIn
+        });
     })
     .catch(err => {
         console.log(err);
