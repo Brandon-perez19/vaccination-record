@@ -12,7 +12,7 @@ const helpers = require('./utils/helpers');
 
 //importing handlebars
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({helpers});
+const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars')
 
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //user sessions set-up
-const session =require('express-session');
+const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
@@ -33,7 +33,7 @@ const sess = {
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db: sequelize 
+        db: sequelize
     })
 }
 

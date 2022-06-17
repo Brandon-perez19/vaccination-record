@@ -13,7 +13,8 @@
             {{!-- not sure hot to populate vaccine property of object here --}}
             <input type="text" class="form-control" name="vaccines-edit" placeholder="New Vaccine" />
             <label for="vaccine-date" class="my-2 form-label text-center fw-semibold"> Edit Date: </label>
-            <input type="date" class="form-control" id="vaccine-date" name="vaccine-date" value="{{vaccine.vaccination_date}}">
+            <input type="date" class="form-control" id="vaccine-date" name="vaccine-date"
+                value="{{vaccine.vaccination_date}}">
         </div>
         <div class="mx-3 my-2">
             Created on {{format_date vaccine.created_at}}

@@ -9,14 +9,14 @@ Vaccination.init(
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true, 
+            primaryKey: true,
             autoIncrement: true
         },
         pet_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        pet_species:{
+        pet_species: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -24,7 +24,7 @@ Vaccination.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        vaccination_date:{
+        vaccination_date: {
             type: DataTypes.STRING,
             allowNull: false,
         },

@@ -2,7 +2,7 @@ const User = require('./User');
 const Vaccination = require('./Vaccination');
 
 //creating associations
-User.hasMany( Vaccination, {
+User.hasMany(Vaccination, {
     foreignKey: 'user_id'
 });
 

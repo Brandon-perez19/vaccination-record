@@ -4,7 +4,8 @@
     height: 360px;
     background-position-y: 16%;
 }
+
 .row>* {
     padding-left: 0 !important;
-    padding-right: 0 !important ;
+    padding-right: 0 !important;
 }

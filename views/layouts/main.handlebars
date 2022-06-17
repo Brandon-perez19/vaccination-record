@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/stylesheets/style.css" rel="stylesheet" >
+    <link href="/stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg col-4 justify-content-end">
             <ul>
                 {{#unless loggedIn}}
-                <a href="/login" class="navbar-brand text-white border-bottom" > Login </a>
+                <a href="/login" class="navbar-brand text-white border-bottom"> Login </a>
                 {{/unless}}
                 {{#if loggedIn}}
                 <button id="logout" class="btn btn-link navbar-brand text-white border-bottom"> Logout </button>
@@ -30,7 +30,7 @@
     </header>
     <main>
         <section id="hero">
-            
+
         </section>
         {{{body}}}
     </main>

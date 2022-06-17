@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Vaccination } = require('../models');
-const withAuth =require('../utils/auth')
+const withAuth = require('../utils/auth')
 
 //get all vaccinations related to user
 router.get('/', withAuth, (req, res) => {
@@ -24,21 +24,21 @@ router.get('/', withAuth, (req, res) => {
             }
         ]
     })
-    .then(dbVaccinationData => {
-        //serialize data
-        const vaccines = dbVaccinationData.map( vaccines => vaccines.get ({ plain: true }));
-        console.log('=====================')
-        console.log(vaccines)
-        //pass data to template 'dashboard'
-        res.render('dashboard', {
-            vaccines,
-            loggedIn: req.session.loggedIn
-        });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
+        .then(dbVaccinationData => {
+            //serialize data
+            const vaccines = dbVaccinationData.map(vaccines => vaccines.get({ plain: true }));
+            console.log('=====================')
+            console.log(vaccines)
+            //pass data to template 'dashboard'
+            res.render('dashboard', {
+                vaccines,
+                loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 
 });
 
@@ -59,19 +59,19 @@ router.get('/edit/:id', withAuth, (req, res) => {
             }
         ]
     })
-    .then(dbVaccinationData => {
-        if(dbVaccinationData) {
-            const vaccine = dbVaccinationData.get({ plain: true});
-            res.render('edit-vaccination', { vaccine, loggedIn: true});
+        .then(dbVaccinationData => {
+            if (dbVaccinationData) {
+                const vaccine = dbVaccinationData.get({ plain: true });
+                res.render('edit-vaccination', { vaccine, loggedIn: true });
 
-        } else {
-            res.status(404).end();
-        }
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
+            } else {
+                res.status(404).end();
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 });
 
 module.exports = router;

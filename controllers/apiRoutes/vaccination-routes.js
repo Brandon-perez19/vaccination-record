@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const { Vaccination, User } = require('../../models');
-const  withAuth = require('../../utils/auth')
+const withAuth = require('../../utils/auth')
 
 //gets all vaccination
-router.get('/', (req, res) => { 
+router.get('/', (req, res) => {
     Vaccination.findAll({
         attributes: [
             'id',
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
             'user_id',
             'created_at'
         ],
-        order: [[ 'created_at', 'DESC']],
+        order: [['created_at', 'DESC']],
         include: [
             {
                 model: User,
@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Vaccination.findOne({ 
+    Vaccination.findOne({
         //pulls based off users id
         where: {
             id: req.params.id
@@ -53,17 +53,17 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(dbVaxData => {
-        if(!dbVaxData) {
-            res.status(404).json({ message: 'No Vaccination Forms found with this user' });
-            return;
-        }
-        res.json(dbVaxData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbVaxData => {
+            if (!dbVaxData) {
+                res.status(404).json({ message: 'No Vaccination Forms found with this user' });
+                return;
+            }
+            res.json(dbVaxData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.post('/', withAuth, (req, res) => {
@@ -91,18 +91,18 @@ router.put('/:id', withAuth, (req, res) => {
             where: {
                 id: req.params.id
             }
-    })
-    .then(dbVaxData => {
-        if(!dbVaxData){
-            res.status(404).json({message: 'No Vaccination Records found with this User'});
-            return;
-        }
-        res.json(dbVaxData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        })
+        .then(dbVaxData => {
+            if (!dbVaxData) {
+                res.status(404).json({ message: 'No Vaccination Records found with this User' });
+                return;
+            }
+            res.json(dbVaxData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.delete('/:id', withAuth, (req, res) => {
@@ -111,17 +111,17 @@ router.delete('/:id', withAuth, (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbVaxData => {
-        if(!dbVaxData) {
-            res.status(404).json({ message: 'No Vaccinations found with this User'});
-            return;
-        }
-        res.json(dbVaxData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbVaxData => {
+            if (!dbVaxData) {
+                res.status(404).json({ message: 'No Vaccinations found with this User' });
+                return;
+            }
+            res.json(dbVaxData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;

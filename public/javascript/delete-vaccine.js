@@ -6,7 +6,7 @@ async function deleteFormHandler(event) {
     ];
 
     console.log(id);
-    
+
     const response = await fetch(`/api/vaccination/${id}`, {
         method: 'DELETE',
     });
