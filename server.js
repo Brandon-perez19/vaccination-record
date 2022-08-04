@@ -48,6 +48,6 @@ app.use((req, res) => {
 });
 
 //connection to db, using sequilize
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log(`Now listening at Port ${PORT}`));
 });
